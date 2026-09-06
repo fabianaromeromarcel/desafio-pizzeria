@@ -1,21 +1,49 @@
-# React + Vite
+Pizzería Mamma Mía
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Proyecto desarrollado como parte del Hito 1 del módulo de Introducción a React de Desafío Latam.
 
-Currently, two official plugins are available:
+Descripción
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Aplicación web para una pizzería que muestra información de diferentes pizzas y utiliza componentes de React para construir la interfaz.
 
-## React Compiler
+El proyecto fue desarrollado utilizando React + Vite y Bootstrap.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Tecnologías utilizadas
 
-## Expanding the ESLint configuration
+* React
+* Vite
+* JavaScript
+* JSX
+* Bootstrap
+* CSS
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
-# pizzeria-hito1
-# desafio-pizzeria-hito1
-# desafio-pizzeria-hito1
-# desafio-pizzeria-hito1
-# desafio-pizzeria-hito1
+Componentes
+
+La aplicación está organizada utilizando componentes de React:
+
+* Navbar: barra de navegación y total de la compra.
+* Home: página principal.
+* Header: encabezado de la página.
+* CardPizza: tarjeta utilizada para mostrar la información de cada pizza.
+* Footer: pie de página.
+
+Funcionalidades
+
+* Barra de navegación con las opciones correspondientes.
+* Visualización de pizzas mediante componentes reutilizables.
+* Información de cada pizza:
+    * Nombre
+    * Precio
+    * Ingredientes
+    * Imagen
+* Visualización del total de la compra.
+* Renderizado condicional de las opciones de navegación según el estado de token.
+* Diseño responsive.
+
+
+
+Autor
+
+Fabiana Romero Marcel
+
+desafio-pizzeria-hito1.vercel.app
