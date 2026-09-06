@@ -4,5 +4,5 @@ import { defineConfig } from 'vite'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: '/pizzeria-hito1/',
+  base: 'https://fabianaromeromarcel.github.io/pizzeria-hito1/',
 })
