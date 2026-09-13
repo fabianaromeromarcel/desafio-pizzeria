@@ -1,19 +1,24 @@
 import { useState } from 'react'
 import './App.css'
-import Home from './Home'
+import Home from './components/Home'
 import Navbar from './Navbar'
-import Footer from './Footer'
+import Footer from './components/Footer'
 import './style.css'
+import FormRegistro from './components/FormRegistro'
+import FormLogin from './components/FormLogin'
 
-function App() {
-  const [count, setCount] = useState(0)
-
+const App = () => {
+  const [vista, setVista] = useState('home')
   return (
-    <>
-      <Navbar></Navbar>
-      <Home></Home>
-      <Footer></Footer>
-    </>
+    <div className="app">
+      <Navbar setVista={setVista} />
+      <main className="main-content">
+        {vista === 'home' && <Home />}
+        {vista === 'registro' && <FormRegistro />}
+        {vista === 'login' && <FormLogin />}
+      </main>
+      <Footer />
+    </div>
   )
 }
 

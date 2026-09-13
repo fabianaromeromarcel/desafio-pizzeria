@@ -1,4 +1,4 @@
-const Navbar = () => {
+const Navbar = ({ setVista }) => {
 const total = 25000;
 const token = false;
 
@@ -12,7 +12,7 @@ return (
             <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
                 <ul class="navbar-nav gap-2 me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                    <button type="button" class="btn btn-outline-secondary text-black">🍕 Home</button>
+                    <button type="button" class="btn btn-outline-secondary text-black" onClick={() => setVista('home')}>🍕 Home</button>
                     </li>
                     {token ? (<>
                         <li className="nav-item">
@@ -24,17 +24,17 @@ return (
                     </>
                     ) : (<>
                         <li className="nav-item">
-                            <button type="button" className="btn btn-outline-secondary text-black">🔐 Login</button>
+                            <button type="button" className="btn btn-outline-secondary text-black" onClick={() => setVista('login')}>🔐 Login</button>
                         </li>
                         <li className="nav-item">
-                            <button type="button" className="btn btn-outline-secondary text-black">🔐 Register</button>
+                            <button type="button" className="btn btn-outline-secondary text-black" onClick={() => setVista('registro')}>🔐 Register</button>
                         </li>
                     </>
                     )}
                 </ul>
-                <form class="d-flex" role="search">
+                <div class="d-flex" role="search">
                     <button type="button" class="btn btn-outline-primary text-primary">🛒 Total: ${total.toLocaleString("es-CL")}</button>
-                </form>
+                </div>
             </div>
         </div>
     </nav>
