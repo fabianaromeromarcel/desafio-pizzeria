@@ -1,12 +1,25 @@
 import Header from "./Header";
 import CardPizza from "./CardPizza";
 import '../style.css'
+import { pizzas } from "./pizzas";
 
 const Home = () => {
     return (
     <main>
         <Header></Header>
         <div className="pizzas">
+            {pizzas.map((pizza) => {
+                return <CardPizza 
+                    key={pizza.id}
+                    name={pizza.name}
+                    desc={pizza.desc}
+                    price={pizza.price}
+                    ingredients={pizza.ingredients}
+                    img={pizza.img}
+                    />
+            })}
+        </div>
+        {/*<div className="pizzas">
             <CardPizza
                 name="Napolitana"
                 price={5950}
@@ -25,7 +38,7 @@ const Home = () => {
                 ingredients={["mozzarella", "pepperoni", "orégano"]}
                 img="https://images.unsplash.com/photo-1700760934249-93efbb574d23?q=80&w=1760&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             />
-        </div>
+        </div>*/}
         
     </main>
     )

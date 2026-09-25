@@ -7,8 +7,12 @@ const CardPizza = (props) => {
 
             <div className="card-body">
                 <h5 className="card-title">{props.name}</h5>
-                <p className="card-text">Ingredientes:</p>
-                <p className="card-text">{props.ingredients.join(", ")}</p>
+                {/*<p className="card-text">{props.desc}</p>*/}
+                <ul>
+                    {props.ingredients.map((ingredient) => {
+                        return <li key={ingredient}>{ingredient}</li>
+                    })}
+                </ul>
             </div>
 
             <ul className="list-group list-group-flush">

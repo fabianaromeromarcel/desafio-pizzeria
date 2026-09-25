@@ -38,3 +38,4 @@ const FormRegistro = () => {
 }
 
 export default FormRegistro;
+
