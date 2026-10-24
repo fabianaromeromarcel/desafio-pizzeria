@@ -1,6 +1,7 @@
 //import { useState } from 'react'
 import './App.css'
 //import Home from './components/Home'
+import Pizza from './components/Pizza'
 import Navbar from './Navbar'
 import Footer from './components/Footer'
 import './style.css'
@@ -14,10 +15,11 @@ const App = () => {
     <div className="app">
       <Navbar/>
       <main className="main-content">
+        <Pizza />
         {/*<Home />
         <FormRegistro />
-        <FormLogin />*/}
-        <Cart/>
+        <FormLogin />
+        <Cart/>*/}
       </main>
       <Footer />
     </div>
