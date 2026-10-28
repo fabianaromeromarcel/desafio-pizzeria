@@ -1,10 +1,27 @@
-import { useState, useEffect } from "react";
-import Header from "./Header";
-import CardPizza from "./CardPizza";
+//import { useState, useEffect } from "react";
+import Header from "../components/Header";
+import CardPizza from "../components/CardPizza";
 import '../style.css'
+import { pizzas } from "../components/pizzas";
 
 const Home = () => {
-    const [pizzas, setPizzas] = useState([]);
+    return (
+        <main>
+            <Header />
+
+            <div className="pizzas">
+                {pizzas.map((pizza) => (
+                    <CardPizza
+                        key={pizza.id}
+                        name={pizza.name}
+                        desc={pizza.desc}
+                        price={pizza.price}
+                        ingredients={pizza.ingredients}
+                        img={pizza.img}
+                    />
+                ))}
+            </div>
+    {/*const [pizzas, setPizzas] = useState([]);
     useEffect(() => {
         const obtenerPizzas = async () => {
             const respuesta = await fetch("http://localhost:5001/api/pizzas");
@@ -27,7 +44,8 @@ const Home = () => {
                     img={pizza.img}
                     />
             })}
-        </div>
+        </div>*/}
+        
         {/*<div className="pizzas">
             <CardPizza
                 name="Napolitana"

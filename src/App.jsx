@@ -1,28 +1,33 @@
 //import { useState } from 'react'
+import { Routes, Route } from 'react-router-dom';
 import './App.css'
-//import Home from './components/Home'
-import Pizza from './components/Pizza'
-import Navbar from './Navbar'
+import Home from './pages/Home'
+import Pizza from './pages/Pizza';
+import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import './style.css'
-import Cart from './components/Cart'
-//import FormRegistro from './components/FormRegistro'
-//import FormLogin from './components/FormLogin'
+import Cart from './pages/Cart'
+import FormRegistro from './pages/FormRegistro'
+import FormLogin from './pages/FormLogin'
+import Perfil from './pages/Perfil'
+import NotFound from './pages/NotFound'
 
 const App = () => {
   //const [vista, setVista] = useState('home')
   return (
-    <div className="app">
-      <Navbar/>
-      <main className="main-content">
-        <Pizza />
-        {/*<Home />
-        <FormRegistro />
-        <FormLogin />
-        <Cart/>*/}
-      </main>
-      <Footer />
-    </div>
+        <>
+          <Navbar />
+          <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/register" element={<FormRegistro />} />
+              <Route path="/login" element={<FormLogin />} />
+              <Route path="/cart" element={<Cart />} />
+              <Route path="/pizza/p001" element={<Pizza />} />
+              <Route path="/profile" element={<Perfil />} />
+              <Route path="*" element={<NotFound />} />
+          </Routes>
+          <Footer />
+        </>
   )
 }
 
