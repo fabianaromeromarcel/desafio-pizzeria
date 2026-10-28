@@ -1,10 +1,10 @@
-import '../style.css'
-import { useState } from 'react';
-import { pizzaCart } from "../components/pizzas";
+import '../style.css';
+import { useContext } from 'react';
+import { CartContext } from '../context/CartContext';
 
 const Cart = () => {
-    const [cart, setCart] = useState(pizzaCart);
-    const aumentarCantidad = (id) => {
+    const { cart, increaseQuantity, decreaseQuantity, total } = useContext(CartContext);
+   /* const aumentarCantidad = (id) => {
         const nuevoCart = cart.map((pizza) => {
             if (pizza.id === id) {
                 return {
@@ -34,7 +34,7 @@ const Cart = () => {
     return cart.reduce((total, pizza) => {
         return total + pizza.price * pizza.count
     }, 0)
-}
+}*/
     return (
     <div className="cart">
         <h2>Detalles del pedido:</h2>
@@ -49,9 +49,9 @@ const Cart = () => {
                             <p>${pizza.price}</p>
                         </div>
                         <div className="cart-item-quantity">
-                            <button onClick={() => disminuirCantidad(pizza.id)}>-</button>
+                            <button onClick={() => decreaseQuantity(pizza.id)}>-</button>
                             <span>{pizza.count}</span>
-                            <button onClick={() => aumentarCantidad(pizza.id)}>+</button>
+                            <button onClick={() => increaseQuantity(pizza.id)}>+</button>
                         </div>
                     </div>
                 )
@@ -60,7 +60,7 @@ const Cart = () => {
 
         <div className="cart-total">
             <h3>Total</h3>
-            <h2>${calcularTotal()}</h2>
+            <h2>${total.toLocaleString("es-CL")}</h2>
             <button className="pay-button">Pagar</button>
         </div>
     </div>

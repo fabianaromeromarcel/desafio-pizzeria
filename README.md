@@ -2,7 +2,7 @@ Pizzería Mamma Mía
 
 Proyecto desarrollado como parte de los hitos del módulo de Introducción a React de Desafío Latam.
 
-La aplicación corresponde a una pizzería y fue desarrollada progresivamente utilizando componentes de React, props, estados, eventos, renderización dinámica, consumo de una API y navegación entre páginas mediante React Router.
+La aplicación corresponde a una pizzería y fue desarrollada progresivamente utilizando componentes de React, props, estados, eventos, renderización dinámica, consumo de una API, navegación entre páginas mediante React Router y administración compartida del carrito mediante Context API.
 
 Tecnologías utilizadas
 
@@ -11,6 +11,8 @@ Tecnologías utilizadas
 * JavaScript
 * JSX
 * React Router DOM 6
+* Context API (createContext y useContext)
+* React Hooks (useState, useEffect)
 * Bootstrap
 * CSS
 * Fetch API
@@ -40,7 +42,7 @@ Hito 2 — Estados y Eventos
 
 En el segundo hito se incorporaron estados y eventos en React mediante formularios de registro e inicio de sesión.
 
-Formulario de Registro
+Formulario de registro
 
 Se desarrolló un formulario con los siguientes campos:
 
@@ -48,21 +50,21 @@ Se desarrolló un formulario con los siguientes campos:
 * Contraseña.
 * Confirmación de contraseña.
 
-Se incorporaron las siguientes validaciones:
+Validaciones incorporadas:
 
 * Todos los campos son obligatorios.
 * La contraseña debe tener al menos 6 caracteres.
 * La contraseña y su confirmación deben coincidir.
 * Se muestran mensajes de error cuando los datos ingresados no cumplen los requisitos.
 
-Formulario de Login
+Formulario de login
 
 Se desarrolló un formulario con los siguientes campos:
 
 * Email.
 * Contraseña.
 
-Se incorporaron las siguientes validaciones:
+Validaciones incorporadas:
 
 * Todos los campos son obligatorios.
 * La contraseña debe tener al menos 6 caracteres.
@@ -70,13 +72,7 @@ Se incorporaron las siguientes validaciones:
 
 Navegación entre vistas
 
-Se incorporó el manejo de estado para controlar la vista que se muestra en la aplicación:
-
-* Home.
-* Login.
-* Registro.
-
-Los botones correspondientes del Navbar permiten cambiar entre estas vistas.
+Se incorporó el manejo de estado para controlar las vistas de Home, Login y Registro. Los botones correspondientes del Navbar permiten navegar entre estas vistas.
 
 Hito 3 — Renderización dinámica de componentes
 
@@ -91,37 +87,33 @@ Home
 CardPizza
 
 * Se utilizaron props para mostrar la información de cada pizza.
-* Se recorrió dinámicamente la lista de ingredientes.
+* Se recorrió la lista de ingredientes.
 * Se generó un elemento <li> por cada ingrediente.
 
 Cart
 
 Se creó un componente Cart para simular un carrito de compras.
 
-Funcionalidades implementadas:
-
-* Uso de useState para manejar el estado del carrito.
+* Uso inicial de useState para manejar el estado del carrito.
 * Renderización dinámica de los productos.
 * Visualización de la imagen, el nombre, el precio y la cantidad de cada pizza.
 * Botones para aumentar y disminuir la cantidad de pizzas.
 * Eliminación de una pizza cuando su cantidad llega a cero.
 * Botón de pago como parte de la interfaz del carrito.
-
-Para actualizar el carrito se generan nuevos arreglos y objetos, evitando modificar directamente el estado anterior. Se utilizan métodos como map() y filter() para actualizar las cantidades y eliminar elementos.
+* Actualización de arreglos y objetos sin modificar directamente el estado anterior, mediante métodos como map() y filter().
 
 Hito 4 — Consumo de API con useEffect
 
-En este hito se incorporó el consumo de datos desde una API mediante fetch, junto con los hooks useState y useEffect de React.
+En este hito se incorporó el consumo de datos desde una API mediante fetch, junto con los hooks useState y useEffect.
 
 Home
 
-* Se utiliza useState para almacenar las pizzas recibidas.
-* Se utiliza useEffect con un arreglo de dependencias vacío para ejecutar la solicitud al cargar el componente.
-* Se utiliza fetch para obtener la lista de pizzas.
-* Se utiliza async/await para gestionar la solicitud y procesar la respuesta.
-* Se utiliza map() para recorrer la lista de pizzas recibida.
-* Se renderiza un componente CardPizza por cada pizza.
-* Se envían los datos de cada pizza mediante props.
+* Se contempló el uso de useState para almacenar las pizzas recibidas.
+* Se utilizó useEffect para ejecutar una solicitud al cargar el componente.
+* Se utilizó fetch para obtener la lista de pizzas.
+* Se utilizó async/await para gestionar la solicitud y procesar la respuesta.
+* Se utilizó map() para recorrer la lista de pizzas recibida.
+* Se renderizó un componente CardPizza por cada pizza y se enviaron sus datos mediante props.
 
 Pizza
 
@@ -133,13 +125,11 @@ Se desarrolló el componente Pizza para obtener y mostrar la información de una
 * Se utiliza async/await para procesar la respuesta.
 * Se muestra el nombre, la descripción, los ingredientes, el precio y la imagen de la pizza.
 * Se utiliza map() para recorrer dinámicamente la lista de ingredientes.
-* Se incluye un botón «Añadir al carrito» como elemento de interfaz.
+* Se incluye un botón «Añadir al carrito» en la interfaz de detalle.
 
 Backend
 
-Durante el desarrollo, el frontend consume la API local proporcionada para el desafío.
-
-El backend se ejecuta en el puerto 5001.
+Durante el desarrollo, el frontend consume la API local proporcionada para el desafío. El backend se ejecuta en el puerto 5001.
 
 Endpoints utilizados:
 
@@ -172,16 +162,11 @@ Navbar
 
 Se implementó la navegación entre las distintas páginas utilizando el componente Link de React Router.
 
-Funcionalidades:
-
-* Acceso a la página principal.
-* Acceso al formulario de inicio de sesión.
-* Acceso al formulario de registro.
+* Acceso a Home, Login y Registro.
 * Acceso al perfil de usuario.
-* Botón de carrito con el total de la compra, que redirige a /cart.
+* Botón del carrito con el total de la compra y enlace a /cart.
 * Renderizado condicional de las opciones de navegación según el estado del token.
-
-La navegación mediante Link permite cambiar de página sin recargar completamente la aplicación.
+* Navegación sin recargar completamente la aplicación.
 
 Perfil de usuario
 
@@ -193,14 +178,47 @@ Se creó una página NotFound para las rutas inexistentes.
 
 * Muestra un mensaje de error personalizado.
 * Incluye un diseño relacionado con la temática de la pizzería.
-* Incorpora un enlace para volver a la página principal.
+* Incorpora un enlace para volver a Home.
+
+Hito 6 — Administración del carrito con Context API
+
+En el sexto hito se implementó Context API para compartir el estado del carrito entre los componentes de la aplicación, evitando mantener estados independientes en la Navbar y la página del carrito.
+
+CartContext
+
+Se creó src/context/CartContext.jsx para administrar el estado global del carrito.
+
+* Se utiliza createContext() para crear CartContext.
+* Se utiliza CartProvider para compartir el estado y las funciones con los componentes descendientes.
+* Se utiliza useState para almacenar las pizzas añadidas al carrito.
+* El carrito comienza vacío.
+* Se utiliza addToCart para añadir una pizza o aumentar su cantidad si ya existe en el carrito.
+* Se utiliza increaseQuantity para aumentar la cantidad de una pizza.
+* Se utiliza decreaseQuantity para disminuir la cantidad y eliminar el producto cuando llega a cero.
+* Se calcula el total de la compra a partir del precio y la cantidad de cada producto.
+
+Integración con la aplicación
+
+* App.jsx envuelve la aplicación con CartProvider.
+* CardPizza consume CartContext mediante useContext para añadir la pizza seleccionada al carrito.
+* Navbar consume el total del contexto y muestra el precio actualizado de la compra.
+* Cart consume el carrito, las funciones para modificar cantidades y el total desde el mismo contexto.
+* Los cambios realizados en el carrito se reflejan tanto en la página del carrito como en la Navbar.
+
+Funcionalidades del carrito
+
+* Añadir pizzas desde Home.
+* Mostrar los productos añadidos y sus cantidades.
+* Aumentar y disminuir cantidades.
+* Eliminar una pizza cuando su cantidad llega a cero.
+* Calcular y mostrar el total de la compra.
+* Mantener sincronizado el total entre Cart y Navbar.
 
 Organización del proyecto
 
-Se reorganizaron los archivos para separar las páginas completas de los componentes reutilizables.
-
 * pages/: contiene las páginas Home, Pizza, Cart, FormRegistro, FormLogin, Perfil y NotFound.
-* components/: contiene componentes reutilizables como CardPizza, Header y Footer, además de los datos de las pizzas.
+* components/: contiene componentes reutilizables como CardPizza, Navbar, Header y Footer, además del archivo pizzas.js con los datos de las pizzas.
+* context/: contiene CartContext.jsx, que administra el estado compartido del carrito.
 * App.jsx: configura las rutas y la estructura general de la aplicación.
 * main.jsx: configura el punto de entrada de React y envuelve la aplicación con BrowserRouter.
 
@@ -213,6 +231,8 @@ src/
 │   ├── Header.jsx
 │   ├── Navbar.jsx
 │   └── pizzas.js
+├── context/
+│   └── CartContext.jsx
 ├── pages/
 │   ├── Home.jsx
 │   ├── Pizza.jsx
@@ -227,7 +247,6 @@ src/
 ├── index.css
 └── main.jsx
 
-
-Proyecto desplegado en Vercel:
+Proyecto desplegado
 
 https://desafio-pizzeria-hito1.vercel.app
