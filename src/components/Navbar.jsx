@@ -1,10 +1,12 @@
 import { useContext } from "react";
 import { CartContext } from "../context/CartContext";
 import { Link } from "react-router-dom";
+import { UserContext } from "../context/UserContext";
 
 const Navbar = () => {
     const { total } = useContext(CartContext);
-    const token = false;
+    //const token = false;
+    const { token, logout } = useContext(UserContext);
 
     return (
         <nav className="navbar navbar-expand-lg bg-body-tertiary">
@@ -42,7 +44,7 @@ const Navbar = () => {
                                 </li>
 
                                 <li className="nav-item">
-                                    <button type="button" className="btn btn-outline-secondary text-black">
+                                    <button type="button" className="btn btn-outline-secondary text-black" onClick={logout}>
                                         🔒 Logout
                                     </button>
                                 </li>

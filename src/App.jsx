@@ -11,27 +11,31 @@ import FormLogin from './pages/FormLogin'
 import Perfil from './pages/Perfil'
 import NotFound from './pages/NotFound'
 import { CartProvider } from './context/CartContext';
+import { useContext } from 'react';
+import { Navigate } from 'react-router-dom';
+import { UserContext } from './context/UserContext';
 
 const App = () => {
-  return (
-      <CartProvider>
-          <>
-              <Navbar />
+    const { token } = useContext(UserContext);
+    return (
+        <CartProvider>
+            <>
+                <Navbar />
 
-              <Routes>
-                  <Route path="/" element={<Home />} />
-                  <Route path="/register" element={<FormRegistro />} />
-                  <Route path="/login" element={<FormLogin />} />
-                  <Route path="/cart" element={<Cart />} />
-                  <Route path="/pizza/p001" element={<Pizza />} />
-                  <Route path="/profile" element={<Perfil />} />
-                  <Route path="*" element={<NotFound />} />
-              </Routes>
+                <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/register" element={token ? <Navigate to="/" /> : <FormRegistro />} />
+                    <Route path="/login" element={token ? <Navigate to="/" /> : <FormLogin />} />
+                    <Route path="/cart" element={<Cart />} />
+                    <Route path="/pizza/:id" element={<Pizza />} />
+                    <Route path="/profile" element={token ? <Perfil /> : <Navigate to="/login" />} />
+                    <Route path="*" element={<NotFound />} />
+                </Routes>
 
-              <Footer />
-          </>
-      </CartProvider>
-  )
+                <Footer />
+            </>
+        </CartProvider>
+    )
 }
 
 export default App

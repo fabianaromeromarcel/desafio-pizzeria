@@ -1,9 +1,11 @@
 import '../style.css';
 import { useContext } from 'react';
 import { CartContext } from '../context/CartContext';
+import { UserContext } from "../context/UserContext";
 
 const Cart = () => {
     const { cart, increaseQuantity, decreaseQuantity, total } = useContext(CartContext);
+    const { token } = useContext(UserContext);
    /* const aumentarCantidad = (id) => {
         const nuevoCart = cart.map((pizza) => {
             if (pizza.id === id) {
@@ -61,7 +63,7 @@ const Cart = () => {
         <div className="cart-total">
             <h3>Total</h3>
             <h2>${total.toLocaleString("es-CL")}</h2>
-            <button className="pay-button">Pagar</button>
+            <button className="pay-button" disabled={!token}> Pagar </button>
         </div>
     </div>
 )
